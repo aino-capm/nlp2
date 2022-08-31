@@ -28,7 +28,7 @@ def doc2vec(sentences,vector_size,epochs):
   return model
 
 #ラジオボタンで、テキスト文書を選択する
-state = st.radio("選択してください",("経営方針","事業等のリスク"))
+state = st.radio("文書の種類を選択してください",("経営方針","事業等のリスク"))
 if state == "経営方針":
   file_path = "models/sentences_keiei_2203.bin"
 else:
@@ -37,11 +37,14 @@ else:
 with open(file_path,"rb") as p:
   sentences = pickle.load(p)
 
+g = st.selectbox("業種を選択してください",gyosyu)
+x = st.selectbox("企業を選択してください",df_group.get_group(g)["会社名"])
+index = df.loc[df["会社名"]==x].index[0]
 #計算実行の前提の実装
+
+
 with st.form("form"):
-  g = st.selectbox("業種を選択してください",gyosyu)
-  x = st.selectbox("企業を選択してください",df_group.get_group(g)["会社名"])
-  index = df.loc[df["会社名"]==x].index[0]
+ 
   st.caption("ベクトルのサイズ・エポック数を入力してください")
   vector_size = st.number_input("ベクトルのサイズ",min_value=100,max_value=300,value=300,step=50)
   epochs = st.number_input("エポック数",min_value=10,max_value=20,value=20,step=5)

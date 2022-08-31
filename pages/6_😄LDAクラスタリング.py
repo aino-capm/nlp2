@@ -21,7 +21,7 @@ st.markdown("***")
 
 
 
-state = st.radio("選択してください",("経営方針","事業等のリスク"))
+state = st.radio("文書の種類を選択してください",("経営方針","事業等のリスク"))
 if state == "経営方針":
   file_path = "models/docs_keiei_2203_lda.bin"
 else:

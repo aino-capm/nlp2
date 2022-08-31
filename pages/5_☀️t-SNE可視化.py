@@ -15,7 +15,7 @@ st.markdown("***")
 df = pd.read_csv("files/2203有報セット.csv",index_col=0)
 
 
-state = st.radio("選択してください",("経営方針","事業等のリスク"))
+state = st.radio("文書の種類を選択してください",("経営方針","事業等のリスク"))
 if state == "経営方針":
   file_path = "models/doc2vec_2203keiei_sentences_vectors.bin"
 else:

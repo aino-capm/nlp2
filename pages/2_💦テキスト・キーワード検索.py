@@ -17,12 +17,12 @@ corp = df["会社名"]
 
 st.markdown("#### ☕️ テキスト検索")
 st.caption("特定の企業の経営方針・事業等のリスクを表示します")
+g = st.selectbox("業種を選択してください",gyosyu)
+x = st.selectbox("企業を選択してください",df_group.get_group(g)["会社名"])
+index = df.loc[df["会社名"]==x].index[0]
 
-with st.form("form1"):
-  g = st.selectbox("業種を選択してください",gyosyu)
-  x = st.selectbox("企業を選択してください",df_group.get_group(g)["会社名"])
-  index = df.loc[df["会社名"]==x].index[0]
-  text = st.radio("文書を選択してください",('経営方針','事業等のリスク'))
+with st.form("form1"):  
+  text = st.radio("文書の種類を選択してください",('経営方針','事業等のリスク'))
   slider = st.slider("表示文字数",min_value=300,max_value=2500)
   submittted = st.form_submit_button("検索")
   if submittted:

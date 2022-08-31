@@ -22,7 +22,7 @@ corp = df["会社名"]
 
 
 #ラジオボタンで、テキスト文書を選択する
-state = st.radio("選択してください",("経営方針","事業等のリスク"))
+state = st.radio("文書の種類を選択してください",("経営方針","事業等のリスク"))
 if state == "経営方針":
   file_path = "models/docs_keiei_2203.bin"
 else:
@@ -71,11 +71,11 @@ def vecs_dic(feature_names,values,z):
   plt.tight_layout()
   st.pyplot(fig)
 
+g = st.selectbox("業種を選択してください",gyosyu)
+x = st.selectbox("企業を選択してください",df_group.get_group(g)["会社名"])
+index = df.loc[df["会社名"]==x].index[0]
 
 with st.form("form1"):
-  g = st.selectbox("業種を選択してください",gyosyu)
-  x = st.selectbox("企業を選択してください",df_group.get_group(g)["会社名"])
-  index = df.loc[df["会社名"]==x].index[0]
   y = st.number_input("データフレームの単語抽出数",min_value=5,max_value=30,value=10,step=5)
   z = st.number_input("ワードクラウドの単語抽出数",min_value=20,max_value=50,value=50,step=5)
   submittted = st.form_submit_button("データフレーム&ワードクラウド")
