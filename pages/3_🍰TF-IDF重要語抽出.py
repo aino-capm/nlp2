@@ -45,31 +45,31 @@ def tf_idf(docs):
   return values,feature_names,tfidf_df
 
 
-def vecs_dic(feature_names,values,z):
-  words = feature_names
-  vecs = values.tolist()
-  temp_dic = {}
-  vecs_dic = []
-  for vec in vecs:
-    for i in range(len(vec)):
-      temp_dic[words[i]] = vec[i] 
-    vecs_dic.append(temp_dic)
-    temp_dic = {}
+# def vecs_dic(feature_names,values,z):
+#   words = feature_names
+#   vecs = values.tolist()
+#   temp_dic = {}
+#   vecs_dic = []
+#   for vec in vecs:
+#     for i in range(len(vec)):
+#       temp_dic[words[i]] = vec[i] 
+#     vecs_dic.append(temp_dic)
+#     temp_dic = {}
     
-  fig = plt.figure(figsize=(12,12))
+#   fig = plt.figure(figsize=(12,12))
 
-  mask = np.array(Image.open("utils/phpYSbfIJ.png"))
-  im = WordCloud(
-        font_path='fonts/Noto_Serif_JP/NotoSerifJP-Regular.otf',
-        background_color='white',
-        colormap = "viridis",
-        mask=mask,
-        random_state=0,
-        max_words=z).generate_from_frequencies(vecs_dic[index])
-  plt.imshow(im)
-  plt.axis('off')
-  plt.tight_layout()
-  st.pyplot(fig)
+#   mask = np.array(Image.open("utils/phpYSbfIJ.png"))
+#   im = WordCloud(
+#         font_path='fonts/Noto_Serif_JP/NotoSerifJP-Regular.otf',
+#         background_color='white',
+#         colormap = "viridis",
+#         mask=mask,
+#         random_state=0,
+#         max_words=z).generate_from_frequencies(vecs_dic[index])
+#   plt.imshow(im)
+#   plt.axis('off')
+#   plt.tight_layout()
+#   st.pyplot(fig)
 
 g = st.selectbox("業種を選択してください",gyosyu)
 x = st.selectbox("企業を選択してください",df_group.get_group(g)["会社名"])
@@ -84,7 +84,7 @@ with st.form("form1"):
     df = pd.DataFrame(tfidf_df.T[index].sort_values(ascending=False)[:y])  
     st.dataframe(df)  
     
-    vecs_dic(feature_names,values,z)
+    # vecs_dic(feature_names,values,z)
     
     
     
