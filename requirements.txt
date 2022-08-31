@@ -1,0 +1,11 @@
+gensim==3.8.3
+japanize-matplotlib
+matplotlib
+numpy
+pandas
+Pillow
+plotly
+scikit-learn
+sklearn
+streamlit
+wordcloud
