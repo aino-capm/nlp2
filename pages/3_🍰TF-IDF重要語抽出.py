@@ -16,6 +16,8 @@ st.caption("表形式のデータフレームとワードクラウドで表示�
 
 #ファイルアップロード
 df = pd.read_csv("files/2203有報セット.csv",index_col=0)
+df_group = df.groupby("提出者業種")
+gyosyu = list(df_group.groups.keys())
 corp = df["会社名"]
 
 
@@ -71,7 +73,8 @@ def vecs_dic(feature_names,values,z):
 
 
 with st.form("form1"):
-  x = st.selectbox("企業を選択してください",corp)
+  g = st.selectbox("業種を選択してください",gyosyu)
+  x = st.selectbox("企業を選択してください",df_group.get_group(g)["会社名"])
   index = df.loc[df["会社名"]==x].index[0]
   y = st.number_input("データフレームの単語抽出数",min_value=5,max_value=30,value=10,step=5)
   z = st.number_input("ワードクラウドの単語抽出数",min_value=20,max_value=50,value=50,step=5)

@@ -17,13 +17,12 @@ df = pd.read_csv("files/2203有報セット.csv",index_col=0)
 
 state = st.radio("選択してください",("経営方針","事業等のリスク"))
 if state == "経営方針":
-  file_path = "models/doc2vec_2203keiei_neoload.pkl"
+  file_path = "models/doc2vec_2203keiei_sentences_vectors.bin"
 else:
-  file_path = "models/doc2vec_2203risk_neoload.pkl"
+  file_path = "models/doc2vec_2203risk_sentences_vectors.bin"
 
 with open(file_path,"rb") as p:
-  model = pickle.load(p)
-sentence_vectors = np.vstack(model.docvecs.vectors_docs)
+  sentence_vectors = pickle.load(p)
 
 
 #可視化のタイプを選択する。

@@ -16,6 +16,8 @@ st.markdown("***")
 
 
 df = pd.read_csv("files/2203有報セット.csv",index_col=0).reset_index()  
+df_group = df.groupby("提出者業種")
+gyosyu = list(df_group.groups.keys())
 corp = df["会社名"]
 
 @st.cache
@@ -37,7 +39,8 @@ with open(file_path,"rb") as p:
 
 #計算実行の前提の実装
 with st.form("form"):
-  x = st.selectbox("企業を選択してください",corp)
+  g = st.selectbox("業種を選択してください",gyosyu)
+  x = st.selectbox("企業を選択してください",df_group.get_group(g)["会社名"])
   index = df.loc[df["会社名"]==x].index[0]
   st.caption("ベクトルのサイズ・エポック数を入力してください")
   vector_size = st.number_input("ベクトルのサイズ",min_value=100,max_value=300,value=300,step=50)
