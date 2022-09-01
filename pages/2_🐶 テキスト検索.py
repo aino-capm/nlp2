@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-st.markdown("## ☕️ テキスト検索")
+st.markdown("## 🐶 テキスト検索")
 st.caption("選択した企業の経営方針・事業等のリスクを表示します")
 st.markdown("***")
 
@@ -15,6 +15,8 @@ df = pd.read_csv(file_path,index_col=0)
 df_group = df.groupby("提出者業種")
 gyosyu = sorted(list(df_group.groups.keys()),reverse=True)
 corp = df["会社名"]
+
+
 
 g = st.selectbox("業種を選択してください",gyosyu)
 x = st.selectbox("企業を選択してください",df_group.get_group(g)["会社名"])

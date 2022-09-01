@@ -9,7 +9,7 @@ import os
 import pickle
 
 #タイトル
-st.markdown("## 類似文書の検索")
+st.markdown("## 🐷 類似文書の検索")
 st.caption("Doc2Vecで有価証券報告書のテキスト文書をベクトル化します。選択した企業と類似した文書を作成している企業を検索します")
 st.markdown("***")
 
@@ -42,7 +42,7 @@ x = st.selectbox("企業を選択してください",df_group.get_group(g)["会�
 index = df.loc[df["会社名"]==x].index[0]
 #計算実行の前提の実装
 
-
+st.markdown("#### パラメータの設定")
 with st.form("form"):
  
   st.caption("ベクトルのサイズ・エポック数を入力してください")
