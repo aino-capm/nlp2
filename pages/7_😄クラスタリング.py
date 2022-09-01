@@ -15,8 +15,8 @@ import os
 import math
 
 
-st.markdown("## トピックモデルによるクラスタリング")
-st.caption("LDAモデルで全文書をクラスタリングし、クラスターごとにワードクラウドで可視化します")
+st.markdown("## クラスタリング")
+st.caption("トピックモデル（LDA）で全文書をクラスタリングし、クラスタごとにワードクラウドで可視化します")
 st.markdown("***")
 
 

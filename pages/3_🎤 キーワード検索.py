@@ -1,9 +1,9 @@
 import streamlit as st
 import pandas as pd
 
-st.markdown("## テキスト検索・キーワード検索")
+st.markdown("## キーワード検索")
+st.caption("特定のキーワードに言及している企業数と企業名をかえします")
 st.markdown("***")
-
 
 state = st.radio("決算期を選択してください",("21年3月期","22年3月期"))
 if state == "21年3月期":
@@ -11,25 +11,7 @@ if state == "21年3月期":
 else:
   file_path = "files/2203有報セット.csv"
 df = pd.read_csv(file_path,index_col=0)
-df_group = df.groupby("提出者業種")
-gyosyu = sorted(list(df_group.groups.keys()),reverse=True)
-corp = df["会社名"]
 
-st.markdown("#### ☕️ テキスト検索")
-st.caption("特定の企業の経営方針・事業等のリスクを表示します")
-g = st.selectbox("業種を選択してください",gyosyu)
-x = st.selectbox("企業を選択してください",df_group.get_group(g)["会社名"])
-index = df.loc[df["会社名"]==x].index[0]
-
-with st.form("form1"):  
-  text = st.radio("文書の種類を選択してください",('経営方針','事業等のリスク'))
-  slider = st.slider("表示文字数",min_value=300,max_value=2500)
-  submittted = st.form_submit_button("検索")
-  if submittted:
-    st.write(df.iloc[index][text][:slider])
-
-st.markdown("#### 🎤 キーワード検索")
-st.caption("特定のキーワードに言及している企業数と企業名をかえします")
 
 with st.form("form2"):
   text = st.radio("検索する文書を選択してください",("経営方針","事業等のリスク"))

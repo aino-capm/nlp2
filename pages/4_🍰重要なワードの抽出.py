@@ -8,9 +8,9 @@ import matplotlib.pyplot as plt
 from PIL import Image
 from wordcloud import WordCloud
 
-st.markdown("## TF-IDFによる重要語の抽出")
+st.markdown("## 重要なワードの抽出")
 st.markdown("***")
-st.caption("テキスト文書の中で重要な単語をTF-IDFを使って抽出します")
+st.caption("テキスト文書の中で重要なワードをTF-IDFを使って抽出します")
 st.caption("表形式のデータフレームで表示します")
 
 
@@ -78,7 +78,7 @@ index = df.loc[df["会社名"]==x].index[0]
 with st.form("form1"):
   y = st.number_input("データフレームの単語抽出数",min_value=5,max_value=30,value=10,step=5)
   z = st.number_input("ワードクラウドの単語抽出数",min_value=20,max_value=50,value=50,step=5)
-  submittted = st.form_submit_button("データフレーム&ワードクラウド")
+  submittted = st.form_submit_button("ワード抽出")
   if submittted:
     values,feature_names,tfidf_df = tf_idf(docs)
     df = pd.DataFrame(tfidf_df.T[index].sort_values(ascending=False)[:y])  

@@ -9,8 +9,8 @@ import os
 import pickle
 
 #タイトル
-st.markdown("## 類似文書検索")
-st.caption("Doc2Vecで有価証券報告書のテキスト文書をベクトル化。選択企業と類似した文書を作成している企業を検索します")
+st.markdown("## 類似文書の検索")
+st.caption("Doc2Vecで有価証券報告書のテキスト文書をベクトル化します。選択した企業と類似した文書を作成している企業を検索します")
 st.markdown("***")
 
 
