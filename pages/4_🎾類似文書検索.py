@@ -17,7 +17,7 @@ st.markdown("***")
 
 df = pd.read_csv("files/2203有報セット.csv",index_col=0).reset_index()  
 df_group = df.groupby("提出者業種")
-gyosyu = list(df_group.groups.keys())
+gyosyu = sorted(list(df_group.groups.keys()),reverse=True)
 corp = df["会社名"]
 
 @st.cache

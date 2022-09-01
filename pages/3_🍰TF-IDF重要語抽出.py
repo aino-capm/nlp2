@@ -17,7 +17,7 @@ st.caption("表形式のデータフレームとワードクラウドで表示�
 #ファイルアップロード
 df = pd.read_csv("files/2203有報セット.csv",index_col=0)
 df_group = df.groupby("提出者業種")
-gyosyu = list(df_group.groups.keys())
+gyosyu = sorted(list(df_group.groups.keys()),reverse=True)
 corp = df["会社名"]
 
 
@@ -85,7 +85,30 @@ with st.form("form1"):
     st.dataframe(df)  
     
     # vecs_dic(feature_names,values,z)
-    
+    words = feature_names
+    vecs = values.tolist()
+    temp_dic = {}
+    vecs_dic = []
+    for vec in vecs:
+      for i in range(len(vec)):
+        temp_dic[words[i]] = vec[i] 
+      vecs_dic.append(temp_dic)
+      temp_dic = {}
+      
+    fig = plt.figure(figsize=(12,12))
+
+    mask = np.array(Image.open("utils/phpYSbfIJ.png"))
+    im = WordCloud(
+          font_path='fonts/Noto_Serif_JP/NotoSerifJP-Regular.otf',
+          background_color='white',
+          colormap = "viridis",
+          mask=mask,
+          random_state=0,
+          max_words=z).generate_from_frequencies(vecs_dic[index])
+    plt.imshow(im)
+    plt.axis('off')
+    plt.tight_layout()
+    st.pyplot(fig)
     
     
   

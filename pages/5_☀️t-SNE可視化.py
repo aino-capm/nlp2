@@ -9,8 +9,8 @@ import japanize_matplotlib
 import pickle
 import plotly.express as px
 
-st.markdown("## 文章ベクトルの可視化")
-st.caption("t-SNEを使って有価証券報告書の文章ベクトルを低次元に変換し可視化します")
+st.markdown("## 文章ベクトルの可視化（業種別）")
+st.caption("t-SNEを使って有価証券報告書の文章ベクトルを低次元に変換し、業種別に可視化します")
 st.markdown("***")
 df = pd.read_csv("files/2203有報セット.csv",index_col=0)
 
@@ -41,7 +41,7 @@ if sight_menu == "2次元":
       color="業種",labels={"color":"業種"},hover_data = ['corp'])
     fig.update_traces(marker_size=5)
     fig.update_layout(plot_bgcolor="white")
-    fig.show()
+    st.plotly_chart(fig, use_container_width=True)
 
 if sight_menu == "3次元":
   st.markdown("#### 3次元で可視化します")
@@ -56,5 +56,5 @@ if sight_menu == "3次元":
       color="業種",labels={"color":"業種"},hover_data = ['corp'])
     fig.update_traces(marker_size=2)
     fig.update_layout(plot_bgcolor="white")
-    fig.show()
+    st.plotly_chart(fig, use_container_width=True)
 
