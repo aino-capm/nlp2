@@ -37,10 +37,10 @@ if sight_menu == "2次元":
     df_vec_tsne["corp"] = df.reset_index()["会社名"]
     df_vec_tsne["業種"] = df.reset_index()["提出者業種"]
     fig = px.scatter(
-      df_vec_tsne, x=0, y=1,width=1000,height=1000,
+      df_vec_tsne, x=0, y=1,
       color="業種",labels={"color":"業種"},hover_data = ['corp'])
     fig.update_traces(marker_size=5)
-    fig.update_layout(plot_bgcolor="white")
+    fig.update_layout(plot_bgcolor="white",width=1000,height=1000)
     st.plotly_chart(fig, use_container_width=True)
 
 if sight_menu == "3次元":
@@ -52,9 +52,9 @@ if sight_menu == "3次元":
     df_vec_tsne3["corp"] = df.reset_index()["会社名"]
     df_vec_tsne3["業種"] = df.reset_index()["提出者業種"]
     fig = px.scatter_3d(
-      df_vec_tsne3, x=0, y=1,z=2,width=1000,height=1000,
+      df_vec_tsne3, x=0, y=1,z=2,
       color="業種",labels={"color":"業種"},hover_data = ['corp'])
     fig.update_traces(marker_size=2)
-    fig.update_layout(plot_bgcolor="white")
+    fig.update_layout(plot_bgcolor="white",width=1000,height=1000)
     st.plotly_chart(fig, use_container_width=True)
 

@@ -11,7 +11,7 @@ from wordcloud import WordCloud
 st.markdown("## TF-IDFによる重要語の抽出")
 st.markdown("***")
 st.caption("テキスト文書の中で重要な単語をTF-IDFを使って抽出します")
-st.caption("表形式のデータフレームとワードクラウドで表示します")
+st.caption("表形式のデータフレームで表示します")
 
 
 #ファイルアップロード
@@ -44,7 +44,7 @@ def tf_idf(docs):
   
   return values,feature_names,tfidf_df
 
-
+#ワードクラウド用の辞書が大きすぎてクラッシュしてしまう
 # def vecs_dic(feature_names,values,z):
 #   words = feature_names
 #   vecs = values.tolist()
@@ -85,30 +85,6 @@ with st.form("form1"):
     st.dataframe(df)  
     
     # vecs_dic(feature_names,values,z)
-    words = feature_names
-    vecs = values.tolist()
-    temp_dic = {}
-    vecs_dic = []
-    for vec in vecs:
-      for i in range(len(vec)):
-        temp_dic[words[i]] = vec[i] 
-      vecs_dic.append(temp_dic)
-      temp_dic = {}
-      
-    fig = plt.figure(figsize=(12,12))
-
-    mask = np.array(Image.open("utils/phpYSbfIJ.png"))
-    im = WordCloud(
-          font_path='fonts/Noto_Serif_JP/NotoSerifJP-Regular.otf',
-          background_color='white',
-          colormap = "viridis",
-          mask=mask,
-          random_state=0,
-          max_words=z).generate_from_frequencies(vecs_dic[index])
-    plt.imshow(im)
-    plt.axis('off')
-    plt.tight_layout()
-    st.pyplot(fig)
     
     
   
