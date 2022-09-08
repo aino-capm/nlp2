@@ -11,7 +11,7 @@ if state == "21年3月期":
   file_path = "files/2103有報セット.csv"
 else:
   file_path = "files/2203有報セット.csv"
-df = pd.read_csv(file_path,index_col=0)
+df = pd.read_csv(file_path,index_col=0).reset_index()
 df_group = df.groupby("提出者業種")
 gyosyu = sorted(list(df_group.groups.keys()),reverse=True)
 corp = df["会社名"]
