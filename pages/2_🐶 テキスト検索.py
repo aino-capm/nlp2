@@ -24,7 +24,7 @@ index = df.loc[df["会社名"]==x].index[0]
 
 with st.form("form1"):  
   text = st.radio("文書の種類を選択してください",('経営方針','事業等のリスク'))
-  slider = st.slider("表示文字数",min_value=300,max_value=00)
+  slider = st.slider("表示文字数",min_value=300,max_value=10000)
   submittted = st.form_submit_button("検索")
   if submittted:
     st.write(df.iloc[index][text][:slider])
