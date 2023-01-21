@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-st.markdown("## 🐱 キーワード検索")
+st.markdown("## キーワード検索")
 st.caption("特定のキーワードに言及している企業数と企業名をかえします")
 st.markdown("***")
 
