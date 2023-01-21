@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 from PIL import Image
 from wordcloud import WordCloud
 
-st.markdown("## 🐨 重要なワードの抽出")
+st.markdown("## 重要なワードの抽出")
 st.markdown("***")
 st.caption("テキスト文書の中で重要なワードをTF-IDFを使って抽出します")
 st.caption("表形式のデータフレームで表示します")
