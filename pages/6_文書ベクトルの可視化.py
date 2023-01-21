@@ -9,7 +9,7 @@ import japanize_matplotlib
 import pickle
 import plotly.express as px
 
-st.markdown("## 🐮 文章ベクトルの可視化（業種別）")
+st.markdown("## 文章ベクトルの可視化（業種別）")
 st.caption("t-SNEを使って有価証券報告書の文章ベクトルを低次元に変換し、業種別に可視化します")
 st.markdown("***")
 df = pd.read_csv("files/2203有報セット.csv",index_col=0)
