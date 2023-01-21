@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-st.markdown("## 🐶 テキスト検索")
+st.markdown("## テキスト検索")
 st.caption("選択した企業の経営方針・事業等のリスクを表示します")
 st.markdown("***")
 
