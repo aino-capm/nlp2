@@ -6,6 +6,5 @@ pandas
 Pillow
 plotly
 scikit-learn
-sklearn
 streamlit
 wordcloud
